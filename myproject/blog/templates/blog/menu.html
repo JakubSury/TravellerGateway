@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div class="container">
+        <div>
+            <a class="navbar-brand" href="{% url 'home' %}" class="logo">Portal podróżnika</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Strona główna</a></li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'trips' %}" class="nav-link">Moje wycieczki</a></li>
+                <li class="nav-item"><a href="{% url 'liked_trips' %}" class="nav-link">Polubione</a></li>
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">{{ user.get_username }}</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Wyloguj</a></li>
+            {% else %}
+                <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Rejestracja</a></li>
+                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Zaloguj</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

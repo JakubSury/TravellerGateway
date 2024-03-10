@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="signup-container">
+        <h1>Zarejestruj się</h1>
+        <br>
+        <form method="POST" class="signup-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                <small class="text-muted">Nazwa użytkownika powinna zawierać od 4 do 150 znaków.</small>
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <small class="text-muted">Hasło powinno zawierać co najmniej 8 znaków.</small>
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+        </form>
+    </div>
+{% endblock %}

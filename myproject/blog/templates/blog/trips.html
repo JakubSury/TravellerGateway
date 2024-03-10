@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Moje wycieczki</h1>
+    <br>
+    {% for trip in trips %}
+        <div>
+            <p><a href="{% url 'trip' trip.id %}"><strong>{{ trip.title }}</strong></a></p>
+            <p>Od {{ trip.start_date|date:"d.m.Y" }} do {{ trip.end_date|date:"d.m.Y" }}</p>
+            <form action="{% url 'edit_trip' trip.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Edytuj</button>
+            </form>
+            <form action="{% url 'delete_trip' trip.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Usuń</button>
+            </form>
+        </div>
+        <br>
+    {% endfor %}
+    <p><a href="{% url 'add_trip' %}"><strong>Dodaj nową wycieczkę</strong></a></p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="login-container">
+        <h1>Zaloguj się</h1>
+        <br>
+        {% if error_message %}
+            <div class="alert alert-danger">{{ error_message }}</div>
+        {% endif %}
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Nazwa użytkownika:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Zaloguj się</button>
+        </form>
+    </div>
+{% endblock %}

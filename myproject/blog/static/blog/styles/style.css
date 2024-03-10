@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #516B5E;
+    padding: 10px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-family: Verdana, Arial;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #41564B;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #516B5E;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.trip-details {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.trip-details h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.trip-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.trip-details li {
+    margin-bottom: 5px;
+}
+
+.trip-details li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.trip-details ul ul {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+a {
+    color: #008000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+button {
+    background-color: #B8860B;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #DAA520;
+}

@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Aplikacja Django{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'blog/styles/style.css' %}" type="text/css">
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body>
+
+<header>
+    {% include 'blog/menu.html' %}
+</header>
+
+<main>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<footer>
+    <p>Jakub Sury - projekt końcowy SDA</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block title %}Favourites{% endblock %}
+{% block page_title %} Polubione wycieczki {% endblock %}
+
+{% block content %}
+    <h1>Polubione wycieczki</h1>
+    <br>
+    {% for like in liked_trips %}
+        <div>
+            <p><a href="{% url 'trip' like.trip.id %}"><strong>{{ like.trip.title }}</strong></a></p>
+            <p>Od {{ like.trip.end_date|date:"d.m.Y" }} do {{ like.trip.end_date|date:"d.m.Y" }}</p>
+            <p>Autor: {{ like.trip.author }}</p>
+            <form action="{% url 'unlike_trip' like.trip.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Odlub</button>
+            </form>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

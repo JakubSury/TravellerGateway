@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Potwierdź usunięcie wydatku</h1>
+    <br>
+    <p>Czy na pewno chcesz usunąć ten wydatek?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Tak, usuń</button>
+    </form>
+{% endblock %}

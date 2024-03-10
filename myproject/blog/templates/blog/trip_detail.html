@@ -1,0 +1,87 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block page_title %} Widok dla {{ trip }} {% endblock %}
+
+{% block content %}
+    <div class="trip-details">
+        <h1>Szczegóły wycieczki "{{ trip.title }}"</h1>
+        <ul>
+            <li><strong>Data startu:</strong>{{trip.start_date|date:"d.m.Y"}}</li>
+            <li><strong>Data końca:</strong>{{trip.end_date|date:"d.m.Y"}}</li>
+            <li><strong>Opis:</strong> {{trip.description}}</li>
+            <li><strong>Kraje:</strong>{% for country in trip.countries.all %} {{ country.name }} {% endfor %}
+            </li>
+            <li><strong>Autor:</strong> {{ trip.author }}</li>
+        </ul>
+    </div>
+
+{% if trip.author == request.user %}
+<br>
+  <div class="expenses">
+        <h2>Wydatki</h2>
+      <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Planowany koszt</th>
+                    <th>Rzeczywisty koszt</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.name }}</td>
+                        <td>{{ expense.planned_cost }}</td>
+                        <td>{{ expense.actual_cost }}</td>
+                        <td>
+                            <a href="{% url 'expense_update' trip_id=trip.id expense_id=expense.id %}">Edytuj</a>
+                            <a href="{% url 'expense_delete' trip_id=trip.id expense_id=expense.id %}">Usuń</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><strong>Suma</strong></td>
+                    <td><strong>{{ total_planned_cost }}</strong></td>
+                    <td><strong>{{ total_actual_cost }}</strong></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+      <a href="{% url 'expense_create' trip_id=trip.id %}" class="btn btn-primary"><strong>Dodaj wydatek</strong></a>
+    </div>
+ <div class="todos">
+     <br>
+            <h2>Lista rzeczy do zrobienia</h2>
+     <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zadanie</th>
+                        <th>Status</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in trip.to_dos.all %}
+                        <tr>
+                            <td>{{ todo.task }}</td>
+                            <td>{{ todo.get_status_display }}</td>
+                            <td>
+                                <a href="{% url 'todo_update' trip_id=trip.id todo_id=todo.id %}">Edytuj</a>
+                                <a href="{% url 'todo_delete' trip_id=trip.id todo_id=todo.id %}">Usuń</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+     <a href="{% url 'todo_create' trip_id=trip.id %}" class="btn btn-primary"><strong>Dodaj zadanie</strong></a>
+        </div>
+
+{% endif %}
+
+{% endblock %}

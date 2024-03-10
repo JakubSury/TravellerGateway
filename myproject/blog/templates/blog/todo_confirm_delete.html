@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Potwierdź usunięcie zadania</h1>
+    <p>Czy na pewno chcesz usunąć to zadanie?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Tak, usuń</button>
+        <a href="{% url 'trip' pk=trip_id %}">Anuluj</a>
+    </form>
+{% endblock %}

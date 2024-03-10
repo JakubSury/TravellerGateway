@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Wycieczki innych</h1>
+        <br>
+
+        {% for trip in other_trips %}
+            <div>
+                <p><a href="{% url 'trip' trip.id %}"><strong>{{ trip.title }}</strong></a></p>
+                <p>Od {{ trip.end_date|date:"d.m.Y" }} do {{ trip.end_date|date:"d.m.Y" }}</p>
+                <p>Autor: {{ trip.author }}</p>
+                <form action="{% url 'like_trip' trip.id %}" method="post">
+                    {% csrf_token %}
+                    {% if trip.user_has_liked %}
+                        <button type="submit">Odlub</button>
+                    {% else %}
+                        <button type="submit">Polub</button>
+                    {% endif %}
+                </form>
+            </div>
+            <br>
+        {% endfor %}
+    {% else %}
+        <h1>Zarejestruj się lub zaloguj!</h1>
+    {% endif %}
+{% endblock %}
